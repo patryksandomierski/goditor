@@ -2,18 +2,19 @@ package ui
 
 import (
 	"fmt"
-	"image/color"
 
 	"fyne.io/fyne"
 	"fyne.io/fyne/app"
 	"fyne.io/fyne/canvas"
 	"fyne.io/fyne/layout"
+	"fyne.io/fyne/theme"
 	"fyne.io/fyne/widget"
 )
 
 // DrawMainWindow show and runs new main window
 func DrawMainWindow(appName string) {
 	app := app.New()
+	app.Settings().SetTheme(theme.DarkTheme())
 	window := app.NewWindow(appName)
 	window.Resize(fyne.NewSize(640, 480))
 
@@ -40,19 +41,21 @@ func DrawMainWindow(appName string) {
 	
 
 	text1 := canvas.NewText("top", Red)
+	text1.TextStyle.Monospace = true
 	text1.Alignment = fyne.TextAlignCenter
 	text2 := canvas.NewText("bottom", Red)
 	text2.Alignment = fyne.TextAlignCenter
 	text3 := canvas.NewText("left", Red)
 	text4 := canvas.NewText("right", Red)
-	text5 := canvas.NewRectangle(color.Black)
-
+	textArea := NewTextArea()
+	textArea.SetPlaceHolder("some place holder")
+	
 
 	
 
 	layout := layout.NewBorderLayout(text1, text2, text3, text4)
 
-	cont := fyne.NewContainerWithLayout(layout, text1, text2, text3, text4, text5)
+	cont := fyne.NewContainerWithLayout(layout, text1, text2, text3, text4, textArea)
 
 	window.SetContent(cont)
 
