@@ -4,10 +4,13 @@ import (
 	"fmt"
 
 	"github.com/patryksandomierski/goditor/morestrings"
+	"github.com/patryksandomierski/goditor/ui"
 )
 
-func main() {
-	fmt.Println("Hello, world.")
+const appName = "Goditor"
 
+func main() {
 	fmt.Println(morestrings.ReverseChars("!dlrow ,olleH"))
+
+	ui.DrawMainWindow(appName)
 }
